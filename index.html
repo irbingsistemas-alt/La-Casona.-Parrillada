@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Casona de 17 - Pedidos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Menú interactivo - La Casona de 17</h1>
 
+  <div class="menu-item">
+    <label>
+      <input type="checkbox" data-name="Parrillada Mixta" data-price="950" />
+      Parrillada Mixta - 950 CUP
+    </label>
+  </div>
+
+  <div class="menu-item">
+    <label>
+      <input type="checkbox" data-name="Pizza Artesanal" data-price="450" />
+      Pizza Artesanal - 450 CUP
+    </label>
+  </div>
+
+  <div class="menu-item">
+    <label>
+      <input type="checkbox" data-name="Mojito Cubano" data-price="250" />
+      Mojito Cubano - 250 CUP
+    </label>
+  </div>
+
+  <p>Total: <span id="total">0</span> CUP</p>
+
+  <button onclick="enviarPedido()">Enviar pedido por WhatsApp</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
