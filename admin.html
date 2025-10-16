@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - La Casona de 17</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Acceso administrativo</h1>
+
+  <div id="login">
+    <input type="password" id="password" placeholder="Contraseña de acceso" />
+    <button onclick="verificar()">Entrar</button>
+  </div>
+
+  <div id="panel" style="display:none;">
+    <h2>Editar menú</h2>
+    <textarea id="menuData" rows="10" cols="50">
+Parrillada Mixta,950
+Pizza Artesanal,450
+Mojito Cubano,250
+    </textarea>
+    <button onclick="guardarMenu()">Guardar cambios</button>
+  </div>
+
+  <script>
+    const clave = "brizg2025"; // Cambia esta contraseña
+
+    function verificar() {
+      const input = document.getElementById("password").value;
+      if (input === clave) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("panel").style.display = "block";
+      } else {
+        alert("Contraseña incorrecta");
+      }
+    }
+
+    function guardarMenu() {
+      const datos = document.getElementById("menuData").value;
+      alert("Menú actualizado:\n" + datos);
+      // Aquí puedes agregar lógica para guardar en archivo o base de datos si lo deseas
+    }
+  </script>
+</body>
+</html>
