@@ -6,16 +6,30 @@ body {
 }
 
 h1 {
-  color: #222;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+#filtros button {
+  margin: 5px;
+  padding: 8px 12px;
+  background: #eee;
+  border: 1px solid #ccc;
+  cursor: pointer;
 }
 
 .menu-item {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   padding: 10px;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
+}
+
+.menu-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 5px;
 }
 
 button {
