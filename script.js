@@ -1,46 +1,34 @@
-const SHEETDB_URL = "https://sheetdb.io/api/v1/c7ira8rzyobxr";
-let platos = [];
+const menu = [
+  { nombre: "Parrillada Mixta", precio: 950 },
+  { nombre: "Pizza Artesanal", precio: 450 },
+  { nombre: "Mojito Cubano", precio: 250 },
+  { nombre: "Flan de Coco", precio: 180 },
+  { nombre: "Cerveza Nacional", precio: 200 }
+];
 
-fetch(SHEETDB_URL)
-  .then(response => response.json())
-  .then(data => {
-    platos = data;
-    mostrarMenu("Todos");
-  });
+const menuDiv = document.getElementById("menu");
 
-function mostrarMenu(categoria) {
-  const menuDiv = document.getElementById("menu");
-  menuDiv.innerHTML = "";
+menu.forEach(item => {
+  const div = document.createElement("div");
+  div.className = "menu-item";
+  div.innerHTML = `
+    <label>
+      <input type="checkbox" data-name="${item.nombre}" data-price="${item.precio}" />
+      ${item.nombre} - ${item.precio} CUP
+    </label>
+  `;
+  menuDiv.appendChild(div);
+});
 
-  const filtrados = categoria === "Todos" ? platos : platos.filter(p => p.categoria === categoria);
-
-  filtrados.forEach(item => {
-    const div = document.createElement("div");
-    div.className = "menu-item";
-    div.innerHTML = `
-      <label>
-        <input type="checkbox" data-name="${item.nombre}" data-price="${item.precio}" />
-        <strong>${item.nombre}</strong> - ${item.precio} CUP
-      </label>
-      ${item.imagen ? `<img src="${item.imagen}" alt="${item.nombre}">` : ""}
-    `;
-    menuDiv.appendChild(div);
-  });
-
-  document.querySelectorAll("input[type='checkbox']").forEach((item) => {
-    item.addEventListener("change", () => {
-      let total = 0;
-      document.querySelectorAll("input[type='checkbox']:checked").forEach((i) => {
-        total += parseInt(i.dataset.price);
-      });
-      document.getElementById("total").textContent = total;
+document.querySelectorAll("input[type='checkbox']").forEach((item) => {
+  item.addEventListener("change", () => {
+    let total = 0;
+    document.querySelectorAll("input[type='checkbox']:checked").forEach((i) => {
+      total += parseInt(i.dataset.price);
     });
+    document.getElementById("total").textContent = total;
   });
-}
-
-function filtrar(categoria) {
-  mostrarMenu(categoria);
-}
+});
 
 function enviarPedido() {
   const checkboxes = document.querySelectorAll("input[type='checkbox']:checked");
@@ -54,7 +42,7 @@ function enviarPedido() {
     total += precio;
   });
 
-  mensaje += `Total estimado: ${total} CUP";
+  mensaje += `Total estimado: ${total} CUP`;
 
   const numero = "5355555555"; // Reemplaza con tu número real
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
