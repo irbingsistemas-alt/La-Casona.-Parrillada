@@ -26,7 +26,7 @@ document.querySelectorAll("input[type='checkbox']").forEach((item) => {
     document.getElementById("total").textContent = total;
   });
 });
-fetch("https://sheetdb.io/api/v1/abc123xyz") // usa tu URL real
+fetch("https://sheetdb.io/api/v1/c7ira8rzyobxr") // usa tu URL real
   .then(response => response.json())
   .then(data => {
     const menuDiv = document.getElementById("menu");
